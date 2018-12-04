@@ -13,6 +13,12 @@ var fs = require('fs');
 var handlers = require('./lib/handlers');
 var helpers = require('./lib/helpers');
 
+
+helpers.sendTwilioSms('4158375309','Hello', function(err){
+  console.log('This was the Error', err);
+  
+});
+
  // Instantiate the HTTP server
 var httpServer = http.createServer(function(req,res){
   unifiedServer(req,res);
@@ -102,5 +108,7 @@ var unifiedServer = function(req,res){
 // Define the request router
 var router = {
   'ping' : handlers.ping,
-  'users' : handlers.users
+  'users' : handlers.users,
+  'tokens' : handlers.tokens,
+  'checks' : handlers.checks
 };
